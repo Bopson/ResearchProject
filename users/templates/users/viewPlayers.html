@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" async></script>
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            background-color: #ffffff; /* White background color */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Light gray border */
+        }
+
+        th {
+            background-color: #343a40; /* Dark background color for table header */
+            color: #ffffff; /* Text color for table header */
+        }
+
+        a {
+            color: #007bff; /* Link color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline link on hover */
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #d4edda; /* Success message background color */
+            border: 1px solid #c3e6cb; /* Success message border color */
+            color: #155724; /* Success message text color */
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop>
+        <source src="{% static 'users/video2.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <h2 style="color: white;">Players</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Position</th>
+                    <th>Strength</th>
+                    <th>Speed</th>
+                    <th>Technique</th>
+                    <th>Mindset</th>
+                    <th>Game intelligence</th>
+                    <th>Team player</th>
+                    <th>Endurance</th>
+                    <th>Skill level</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+              
+                <tr>
+                    <td>{{ player.id }}</td>
+                    <td>{{ player.first }}</td>
+                    <td>{{ player.last }}</td>
+                    <td>{{ player.position }}</td>
+                    <td>{{ player.strength }}</td>
+                    <td>{{ player.speed }}</td>
+                    <td>{{ player.technique }}</td>
+                    <td>{{ player.mindset }}</td>
+                    <td>{{ player.gameIntelligence }}</td>
+                    <td>{{ player.teamPlayer }}</td>
+                    <td>{{ player.endurance }}</td>
+                    <td>{{ player.skill_level }}</td>
+                    <td><a href="{% url 'update' player.id %}">Update</a> | <a href="{% url 'delete' player.id %}">Delete</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="12">No players available</td>
+                </tr>
+               
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+
+        <a href="{% url 'manageplayersdata' %}" class="btn btn-primary">Go back</a>
+    </div>
+</body>
+
+</html>
