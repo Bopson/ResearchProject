@@ -22,6 +22,10 @@
     .form{
         color: white;
     }
+    form input{
+        display: block;
+        width: 100%;
+    }
 
     #img1 {
             cursor: pointer;
@@ -55,7 +59,38 @@
     .container-formation{
       
     }
-   
+    @media (max-width: 768px) {
+        h1{
+            text-align: center;
+            font-weight: 700;  
+            font-size: 40px; 
+             }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+            .form {
+                display: flex;
+                flex-direction: column;
+            }
+            .form-control{
+                font-size: large;
+            }
+            .form label{
+                font-size: xx-large;
+                margin-top: 20px;
+            }
+            input{
+                font-size: large;
+            }
+            body{
+                background-image: url("{% static 'users/football_img6.jpg' %}");
+                background-size: cover;
+            }
+            
+        }
     
 </style>
 <body>
