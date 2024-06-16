@@ -154,6 +154,49 @@
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+@media (max-width: 768px) {
+    .container{
+        max-width: 100%;
+        overflow-x: hidden;
+        transform: scale(1);
+    }
+           .flex-container{
+            margin-top:350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(2);
+           }
+           img{
+            display: none;
+           }
+
+           body{
+                background-image: url("{% static 'users/football_img5.jpg' %}");
+                background-size: cover;
+                overflow-x: hidden;
+            }
+            #butn{
+                margin-top: 340px;
+              
+            }
+           
+            form a{
+                margin-top: 80px;
+            }
+        
+            h1{
+                text-align: center;
+                font-size: 50px;
+            }
+
+
+        }
+
+       
+
+        
     </style>
 </head>
 
@@ -179,7 +222,7 @@
                   </div>
                 <br>{{ form.strength }}
                 <br>
-                Speed: <br>{{ form.speed }}
+                Speed: <br>{{ form.speed }} 
                 <br>
             </div>
 
@@ -198,10 +241,12 @@
             </div>
            
         </div>
-            <input type="submit" value="Create">
+            <input type="submit" value="Create" id="butn"> <br>
+            <a href="{% url 'manageplayersdata' %}" class="btn btn-primary">Go back</a>
+
         </form>
-        <a href="{% url 'viewPlayers' %}" class="btn btn-primary">View Players</a>
-        <a href="{% url 'manageplayersdata' %}" class="btn btn-info">Manage Player's Data</a>
+        <!-- <a href="{% url 'viewPlayers' %}" class="btn btn-primary">View Players</a>
+        <a href="{% url 'manageplayersdata' %}" class="btn btn-info">Manage Player's Data</a> -->
         {% if message %}
         <div id="message">{{ message }}</div>
         {% endif %}
