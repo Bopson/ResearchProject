@@ -70,6 +70,26 @@
         .btn-football:hover {
             background-color: #ffca28;
         }
+
+        @media (max-width: 768px) {
+            /* .navbar-brand{
+                font-size: larger;
+            } */
+            .cont2{
+                margin-top: 300px;
+            }
+            .cont2 a{
+                display: flex;
+                flex-direction: column;
+                justify-content:space-around;
+                align-items: center;
+            }
+            .flex-item{
+                padding: 40px;
+                margin: 30px;
+                font-size:40px;
+            }
+        }
     </style>
 </head>
 
@@ -98,10 +118,10 @@
     </nav>
 
     <!-- Main content container -->
-    <div class="container">
-        <a href="{% url 'createPlayer' %}" class="btn btn-football">Create New Player</a>
-        <a href="{% url 'viewPlayers' %}" class="btn btn-football">View Players</a>
-        <a href="{% url 'bestTeamForm' %}" class="btn btn-football">Generate Best Team</a>
+    <div class="container cont2">
+        <a href="{% url 'createPlayer' %}" class="btn btn-football flex-item">Create New Player</a>
+        <a href="{% url 'viewPlayers' %}" class="btn btn-football flex-item">View Players</a>
+        <a href="{% url 'bestTeamForm' %}" class="btn btn-football flex-item">Generate Best Team</a>
     </div>
 
 </body>
